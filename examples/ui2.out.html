@@ -27,6 +27,7 @@
             left: 0px;
             height: 100vh;
             width: 25vw;
+            padding: 25px;
             overflow: scroll;
         }
 
@@ -36,6 +37,8 @@
             left: 25vw;
             height: 100vh;
             width: 75vw;
+            /* overflow: scroll; */
+            overflow: hidden;
         }
 
         .splash {
@@ -45,6 +48,7 @@
             width: 100%;
             margin: 0px;
             padding: 0px;
+            
         }
 
         .uipage {
@@ -89,33 +93,78 @@
     <div id="MegaContainer">
     <div id="MegaToc">
         <div>
-            <div>TOC HERE</div>
+            <h1>Table of Contents</h1>
             <div id="jsTocListView"></div>
         </div>
     </div>
 
     <div id="MegaList">
-        <div class="splash">
+
+
+        <div data-name="Examples / Home" class="splash">
             <div class="uipage">
     <div class="uipage-inner">
         
                 <div class="vbox-stretch">
-                    <div style="">Main content?</div>
-                    <div style="display: grid; place-content: stretch; grid-template-columns: 70px 70px 70px 70px 70px;">
-                        <div>Tab1</div>
-                        <div>Tab2</div>
-                        <div>Tab3</div>
-                        <div>Tab4</div>
-                        <div>Tab5</div>
+                    <div>
+                        <h2>Page 1</h2>
                     </div>
+                    <div style="text-align: center; display: grid; place-content: stretch; grid-template-columns: 70px 70px 70px 70px 70px;">
+    <div>Home</div>
+    <div>Shop</div>
+    <div>Clients</div>
+    <div>Tasks</div>
+    <div>Me</div>
+</div>
                 </div>
             
     </div>
 </div>
-            <div class="sidenotes">114514</div>
+            <div class="sidenotes">This is the home page of the app.</div>
         </div>
+
+
+        <div data-name="Examples / Second Page" class="splash">
+            <div class="uipage">
+    <div class="uipage-inner">
+        
+                <div class="vbox-stretch">
+                    <div>
+                        <h2>Page 2</h2>
+                    </div>
+                    <div style="text-align: center; display: grid; place-content: stretch; grid-template-columns: 70px 70px 70px 70px 70px;">
+    <div>Home</div>
+    <div>Shop</div>
+    <div>Clients</div>
+    <div>Tasks</div>
+    <div>Me</div>
+</div>
+                </div>
+            
     </div>
 </div>
+            <div class="sidenotes">Write some notes here.</div>
+        </div>
+
+
+
+
+    </div>
+</div>
+
+
+    <script>
+                let splash_ptr_heap = 0;
+                document.querySelectorAll('.splash').forEach((element) => {
+                    element.setAttribute('id', 'splash_id_'+splash_ptr_heap);
+                    document.getElementById('jsTocListView').innerHTML += '<div>' +
+                        '<a class="toc_entry_splash" href="#splash_id_' + splash_ptr_heap + '">' + element.getAttribute("data-name") + '</a>' +
+                    '</div>';
+                    splash_ptr_heap += 1;
+                });
+            </script>
+
+
 </body>
 
 </html>

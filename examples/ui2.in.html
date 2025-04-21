@@ -27,6 +27,7 @@
             left: 0px;
             height: 100vh;
             width: 25vw;
+            padding: 25px;
             overflow: scroll;
         }
 
@@ -36,6 +37,8 @@
             left: 25vw;
             height: 100vh;
             width: 75vw;
+            /* overflow: scroll; */
+            overflow: hidden;
         }
 
         .splash {
@@ -45,6 +48,7 @@
             width: 100%;
             margin: 0px;
             padding: 0px;
+            
         }
 
         .uipage {
@@ -89,26 +93,40 @@
     <MegaContainer>
 
 
-        <splash>
+        <splash data-name="Examples / Home">
             <uipage>
                 <div class="vbox-stretch">
-                    <div>Main content?</div>
-                    <div style="display: grid; place-content: stretch; grid-template-columns: 70px 70px 70px 70px 70px;">
-                        <div>Tab1</div>
-                        <div>Tab2</div>
-                        <div>Tab3</div>
-                        <div>Tab4</div>
-                        <div>Tab5</div>
+                    <div>
+                        <h2>Page 1</h2>
                     </div>
+                    <GlobalTabBar></GlobalTabBar>
                 </div>
             </uipage>
-            <sidenotes>114514</sidenotes>
+            <sidenotes>This is the home page of the app.</sidenotes>
+        </splash>
+
+
+        <splash data-name="Examples / Second Page">
+            <uipage>
+                <div class="vbox-stretch">
+                    <div>
+                        <h2>Page 2</h2>
+                    </div>
+                    <GlobalTabBar></GlobalTabBar>
+                </div>
+            </uipage>
+            <sidenotes>Write some notes here.</sidenotes>
         </splash>
 
 
 
 
     </MegaContainer>
+
+
+    <ending_js></ending_js>
+
+
 </body>
 
 </html>
