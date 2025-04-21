@@ -1,0 +1,121 @@
+<!DOCTYPE html><html>
+
+<head>
+    <meta charset="UTF-8">
+    </meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </meta>
+    <title>Mobile Phone UI Prototype Demo</title>
+    <style></style>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        #MegaContainer {
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        #MegaToc {
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            height: 100vh;
+            width: 25vw;
+            overflow: scroll;
+        }
+
+        #MegaList {
+            position: fixed;
+            top: 0px;
+            left: 25vw;
+            height: 100vh;
+            width: 75vw;
+        }
+
+        .splash {
+            display: flex;
+            flex-direction: row;
+            height: 100vh;
+            width: 100%;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .uipage {
+            display: flex;
+            /* flex-grow: initial; */
+            flex-direction: column;
+            background: #DDDDDD;
+
+            padding: 25px;
+        }
+
+        .uipage-inner {
+            display: flex;
+            flex-grow: 1;
+            flex-direction: column;
+            background: white;
+            border: 1px solid #666666;
+            border-radius: 5px;
+            width: 380px;
+            padding: 12px;
+        }
+
+        .sidenotes {
+            display: flex;
+            flex-grow: 50;
+            flex-direction: column;
+            background: white;
+            padding: 50px;
+        }
+
+
+        .vbox-stretch {
+            display: flex;
+            flex-grow: 1;
+            flex-direction: column;
+            place-content: space-between;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="MegaContainer">
+    <div id="MegaToc">
+        <div>
+            <div>TOC HERE</div>
+            <div id="jsTocListView"></div>
+        </div>
+    </div>
+
+    <div id="MegaList">
+        <div class="splash">
+            <div class="uipage">
+    <div class="uipage-inner">
+        
+                <div class="vbox-stretch">
+                    <div style="">Main content?</div>
+                    <div style="display: grid; place-content: stretch; grid-template-columns: 70px 70px 70px 70px 70px;">
+                        <div>Tab1</div>
+                        <div>Tab2</div>
+                        <div>Tab3</div>
+                        <div>Tab4</div>
+                        <div>Tab5</div>
+                    </div>
+                </div>
+            
+    </div>
+</div>
+            <div class="sidenotes">114514</div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
