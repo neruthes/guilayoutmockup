@@ -1,4 +1,5 @@
 html {
+    font-family: 'SF Pro Text', 'Helvetica Neue', 'Inter', 'Roboto', 'Noto Sans', 'Open Sans', 'IBM Plex Sans', sans-serif, 'Noto Sans CJK SC', 'PingFang SC', 'Microsoft YaHei';
     font-size: 13px;
 }
 
@@ -71,6 +72,7 @@ html {
 }
 
 .Notes {
+    font-size: 1.4rem;
     display: flex;
     flex-grow: 50;
     flex-direction: column;
@@ -85,8 +87,25 @@ html {
     flex-direction: column;
     place-content: space-between;
 }
+.hbox-stretch {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: row;
+    place-content: space-between;
+}
 
 
 #MegaMacros {
     display: none;
+}
+
+
+a.toc_entry_splash {
+    color: inherit;
+}
+a.toc_entry_splash[data-is-current="false"] {
+    opacity: 0.75;
+}
+a.toc_entry_splash[data-is-current="true"] {
+    font-weight: 600;
 }
