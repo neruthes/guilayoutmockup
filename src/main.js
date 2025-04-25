@@ -1,6 +1,11 @@
 
 // Manipulate DOM
-document.querySelector('#MegaToc').innerHTML += `<h1>${document.title}</h1><div id="jsTocListView"></div>`;
+document.querySelector('#MegaContainer').innerHTML = `<div id="MegaToc"></div>
+<div id="MegaList">${document.querySelector('#MegaContainer').innerHTML}</div>`;
+
+document.querySelector('#MegaToc').innerHTML += `<h1>${document.title}</h1>
+<div id="jsTocListView"></div>`;
+
 document.querySelectorAll('.Page').forEach((element) => {
     element.innerHTML = `<div class="uipage-inner">${element.innerHTML}</div>`;
 });
@@ -97,7 +102,46 @@ document.querySelectorAll(`[innerhtml]`).forEach(function (node) {
     node.innerHTML = node.getAttribute('innerhtml');
 });
 
+document.querySelectorAll(`.Notes`).forEach(function (node) {
+    function escapeHtml(string) {
+        const htmlEscapes = {
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#39;'
+        };
+        return String(string).replace(/[&<>"']/g, match => htmlEscapes[match]);
+    }
+    let splash_id = node.parentElement.getAttribute('id');
+    console.log(`splash_id = ${splash_id}`);
+    const code_lines_raw = document.querySelector(`#${splash_id} .uipage-inner`).innerHTML;
+    console.log(code_lines_raw.match(/^[\s^\t\n]+/)[0].length);
+    const indent_str = (new Array(code_lines_raw.match(/^[\s^\t\n]+/)[0].length)).fill(' ').join('');
+    let code_lines = code_lines_raw.replace((new RegExp(`\\n${indent_str}`, 'g')), '\n').trim();
+    node.innerHTML += `<div style="height: 50vh;
+        overflow: scroll;
+        padding: 10px;
+        margin: 5rem 0 0;
+        background: #121417;
+        color: white;
+        border-radius: 5px;
+    ">
+        <div>
+            <button class="btn_write_clipboard" onclick="copy_content_from('dom_code_for_${splash_id}')">Copy Code</button>
+        </div>
+        <pre id="dom_code_for_${splash_id}" style="font-size: 0.9rem;">` + escapeHtml(code_lines) + `</pre>
+    </div>`;
+});
 
+if (location.href.indexOf('https') !== 0) {
+    console.log(`Clipboard writing is only available in HTTPS environments`);
+    document.querySelectorAll('.btn_write_clipboard').forEach(e => e.remove());
+}
+function copy_content_from(node_id) {
+    let node = document.getElementById(node_id);
+    navigator.clipboard.writeText(node.innerText);
+};
 
 
 
@@ -112,6 +156,10 @@ function on_hash_change() {
 }
 window.addEventListener('hashchange', on_hash_change);
 on_hash_change();
+
+if (location.hash === '') {
+    location.href = location.href + '#' + document.querySelector('.Splash').getAttribute('id');
+}
 
 window.addEventListener('resize', function () {
     if (document.querySelector(location.hash)) {
